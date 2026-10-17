@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Commande confirmée - PHILO</title>
+    <script>
+        // Accès réservé aux clients connectés
+        if (!sessionStorage.getItem('philo_auth')) { location.replace('login.html'); }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="products.html" class="logo">PHILO</a>
+        <nav class="nav" aria-label="Navigation principale">
+            <a href="index.html" class="nav-btn" id="logout">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main class="center-page">
+        <div class="card success">
+            <div class="check" aria-hidden="true">✓</div>
+            <h1>Merci !</h1>
+            <p class="lead ok-msg" id="msg">Votre commande est bien enregistrée. Nous vous contactons très bientôt.</p>
+            <div class="actions">
+                <a href="products.html" class="btn btn-block">Retour à la boutique</a>
+                <div class="contact">
+                    <a href="https://wa.me/212600000000" class="btn-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg> WhatsApp</a>
+                    <a href="mailto:contact@philo.com?subject=Ma%20commande" class="btn-gmail"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Gmail</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 PHILO. Tous droits réservés.</span>
+        <span>contact@philo.com</span>
+    </footer>
+
+    <script>
+        try {
+            var o = JSON.parse(sessionStorage.getItem('philo_order'));
+            if (o) {
+                document.getElementById('msg').textContent =
+                    o.nom + ', votre commande « ' + o.produit + ' » (taille ' + o.taille + ', ' + o.prix +
+                    ' MAD) est bien enregistrée. Nous vous appelons très bientôt pour confirmer la livraison à ' + o.ville + '.';
+            }
+        } catch (e) {}
+        document.getElementById('logout').addEventListener('click', function () {
+            sessionStorage.removeItem('philo_auth');
+        });
+    </script>
+</body>
+</html>

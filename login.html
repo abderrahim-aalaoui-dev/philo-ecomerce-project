@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Connexion - PHILO</title>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="logo">PHILO</a>
+        <nav class="nav" aria-label="Navigation principale">
+            <a href="index.html" class="nav-btn">Accueil</a>
+        </nav>
+    </header>
+
+    <main class="center-page login-stage">
+        <div class="login-wrap">
+            <aside class="login-aside">
+                <h2>Votre style commence ici.</h2>
+                <p>Connectez-vous pour découvrir la collection et passer commande en quelques clics.</p>
+                <ul>
+                    <li>Hoodies oversized, coupe ample</li>
+                    <li>Nouvelle collection disponible</li>
+                    <li>Commande simple et rapide</li>
+                </ul>
+            </aside>
+
+        <div class="card login-card">
+            <h1>Connexion</h1>
+            <p class="lead">Accédez à la boutique PHILO.</p>
+            <!-- Adaptez l'action si votre server.js gère la connexion -->
+            <form action="products.html" method="get" onsubmit="sessionStorage.setItem('philo_auth', '1')">
+                <div class="field">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" placeholder="vous@exemple.com" autocomplete="email" required>
+                </div>
+                <div class="field">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" placeholder="Votre mot de passe" autocomplete="current-password" required>
+                </div>
+                <div class="row">
+                    <label><input type="checkbox" name="remember"> Se souvenir de moi</label>
+                    <a href="#">Mot de passe oublié ?</a>
+                </div>
+                <button type="submit" class="btn btn-block">Se connecter</button>
+            </form>
+            <p class="small-link">Pas encore de compte ? <a href="register.html">Créer un compte</a></p>
+        </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 PHILO. Tous droits réservés.</span>
+        <span>contact@philo.com</span>
+    </footer>
+</body>
+</html>

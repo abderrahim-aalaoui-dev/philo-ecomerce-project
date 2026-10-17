@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Boutique - PHILO</title>
+    <script>
+        // Accès réservé aux clients connectés
+        if (!sessionStorage.getItem('philo_auth')) { location.replace('login.html'); }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="products.html" class="logo">PHILO</a>
+        <nav class="nav" aria-label="Navigation principale">
+            <a href="index.html" class="nav-btn" id="logout">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <h1>La collection</h1>
+            <p>Choisissez votre hoodie et sa taille, puis passez commande.</p>
+        </section>
+
+        <div class="toolbar">
+            <select id="sort" aria-label="Trier les produits">
+                <option value="">Trier par</option>
+                <option value="asc">Prix croissant</option>
+                <option value="desc">Prix décroissant</option>
+                <option value="name">Nom A-Z</option>
+            </select>
+            <span class="count" id="count"></span>
+        </div>
+
+        <!-- À MODIFIER : vos vrais produits, descriptions et prix -->
+        <div class="grid">
+            <article class="product" data-name="PHILO Star Edition" data-price="229" data-img="mm.jpeg">
+                <span class="badge">Nouveau</span>
+                <div class="img-wrap"><img src="mm.jpeg" alt="PHILO Star Edition"></div>
+                <div class="product-info">
+                    <h3>PHILO Star Edition</h3>
+                    <p>Détails dorsaux uniques inspirés de l'esthétique moderne et philosophique.</p>
+                    <span class="price">229 MAD</span>
+                    <div class="size-row">
+                        <label>Taille</label>
+                        <select class="size" aria-label="Taille de PHILO Star Edition">
+                            <option>S</option><option>M</option><option selected>L</option><option>XL</option>
+                        </select>
+                    </div>
+                    <a href="checkout.html" class="btn btn-block buy">Acheter maintenant</a>
+                    <div class="contact">
+                        <a href="https://wa.me/212779284661?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20produit%20%3A%20PHILO%20Star%20Edition" class="btn-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg> WhatsApp</a>
+                        <a href="mailto:aalaouiabdrahim707@gmail.com?subject=Commande%20produit%20%3A%20PHILO%20Star%20Edition" class="btn-gmail"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Gmail</a>
+                    </div>
+                </div>
+            </article>
+            <article class="product" data-name="PHILO Modèle 2" data-price="229" data-img="philooo.jpeg">
+                <div class="img-wrap"><img src="philopp.jpeg" alt="PHILO Modèle 2"></div>
+                <div class="product-info">
+                    <h3>PHILO Modèle 2</h3>
+                    <p>Coupe ample, matière confortable.</p>
+                    <span class="price">229 MAD</span>
+                    <div class="size-row">
+                        <label>Taille</label>
+                        <select class="size" aria-label="Taille de PHILO Modèle 2">
+                            <option>S</option><option>M</option><option selected>L</option><option>XL</option>
+                        </select>
+                    </div>
+                    <a href="checkout.html" class="btn btn-block buy">Acheter maintenant</a>
+                    <div class="contact">
+                        <a href="https://wa.me/212779284661?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20produit%20%3A%20PHILO%20Modèle%202" class="btn-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg> WhatsApp</a>
+                        <a href="milto:aalaouiabdrahim707@gmail.com?subject=Commande%20produit%20%3A%20PHILO%20Modèle%202" class="btn-gmail"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Gmail</a>
+                    </div>
+                </div>
+            </article>
+            <article class="product" data-name="PHILO Modèle 3" data-price="229" data-img="oo.jpeg">
+                <div class="img-wrap"><img src="philo.....jpeg" alt="PHILO Modèle 3"></div>
+                <div class="product-info">
+                    <h3>PHILO Modèle 3</h3>
+                    <p>Coupe ample, matière confortable.</p>
+                    <span class="price">229 MAD</span>
+                    <div class="size-row">
+                        <label>Taille</label>
+                        <select class="size" aria-label="Taille de PHILO Modèle 3">
+                            <option>S</option><option>M</option><option selected>L</option><option>XL</option>
+                        </select>
+                    </div>
+                    <a href="checkout.html" class="btn btn-block buy">Acheter maintenant</a>
+                    <div class="contact">
+                        <a href="https://wa.me/212779284661?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20produit%20%3A%20PHILO%20Modèle%203" class="btn-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg> WhatsApp</a>
+                        <a href="milto:aalaouiabdrahim707@gmail.com?subject=Commande%20produit%20%3A%20PHILO%20Modèle%203" class="btn-gmail"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Gmail</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <!-- À MODIFIER : vos vrais avantages -->
+        <ul class="perks">
+            <li><strong>Livraison</strong><span>Partout au Maroc</span></li>
+            <li><strong>Paiement</strong><span>À la livraison</span></li>
+            <li><strong>Échange</strong><span>Simple et rapide</span></li>
+        </ul>
+
+        <section class="help">
+            <div>
+                <h2>Une question avant de commander ?</h2>
+                <p>Écrivez-nous, nous répondons rapidement.</p>
+            </div>
+            <div class="contact">
+                <a href="https://wa.me/212779284661" class="btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="milto:aalaouiabdrahim707@gmail.com" class="btn-gmail">Gmail</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 PHILO. Tous droits réservés.</span>
+        <span>contact@philo.com</span>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.product').forEach(function (card) {
+            var btn = card.querySelector('.buy');
+            var size = card.querySelector('.size');
+            function update() {
+                var p = new URLSearchParams({
+                    produit: card.dataset.name,
+                    prix: card.dataset.price,
+                    taille: size.value,
+                    img: card.dataset.img
+                });
+                btn.href = 'checkout.html?' + p.toString();
+            }
+            size.addEventListener('change', update);
+            update();
+        });
+
+        // Tri et compteur
+        var grid = document.querySelector('.grid');
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.product'));
+        var sort = document.getElementById('sort');
+        var count = document.getElementById('count');
+        var original = cards.slice();
+
+        function render() {
+            var list = original.slice();
+            if (sort.value === 'asc') list.sort(function (a, b) { return a.dataset.price - b.dataset.price; });
+            if (sort.value === 'desc') list.sort(function (a, b) { return b.dataset.price - a.dataset.price; });
+            if (sort.value === 'name') list.sort(function (a, b) { return a.dataset.name.localeCompare(b.dataset.name); });
+            list.forEach(function (c) { grid.appendChild(c); });
+            count.textContent = list.length + (list.length > 1 ? ' produits' : ' produit');
+        }
+        sort.addEventListener('change', render);
+        render();
+
+        document.getElementById('logout').addEventListener('click', function () {
+            sessionStorage.removeItem('philo_auth');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Commande - PHILO</title>
+    <script>
+        // Accès réservé aux clients connectés
+        if (!sessionStorage.getItem('philo_auth')) { location.replace('login.html'); }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="products.html" class="logo">PHILO</a>
+        <nav class="nav" aria-label="Navigation principale">
+            <a href="products.html" class="nav-btn">Boutique</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <h1>Votre commande</h1>
+            <p>Renseignez vos informations pour la livraison.</p>
+        </section>
+
+        <ol class="steps" aria-label="Étapes de la commande">
+            <li class="done">Boutique</li>
+            <li class="current" aria-current="step">Livraison</li>
+            <li>Confirmation</li>
+        </ol>
+
+        <div class="checkout">
+            <aside class="card summary ck-summary" aria-label="Récapitulatif">
+                <h2>Récapitulatif</h2>
+                <img id="s-img" src="jj.jpeg" alt="Produit commandé">
+                <dl>
+                    <dt>Produit</dt><dd id="s-name">-</dd>
+                    <dt>Taille</dt><dd id="s-size">-</dd>
+                    <dt>Paiement</dt><dd><span class="pill-green">À la livraison</span></dd>
+                    <dt class="total">Total</dt><dd class="total" id="s-total">-</dd>
+                </dl>
+            </aside>
+
+            <section class="card ck-form">
+                <h2>Livraison</h2>
+                <p class="lead info-box">Nous vous contactons par téléphone pour confirmer la commande.</p>
+                <!-- Pour enregistrer la commande avec server.js, envoyez l'objet 'order' avec fetch() ici -->
+                <form id="order-form">
+                    <div class="field">
+                        <label for="nom">Nom complet</label>
+                        <input type="text" id="nom" name="nom" autocomplete="name" required>
+                    </div>
+                    <div class="two">
+                        <div class="field">
+                            <label for="tel">Téléphone</label>
+                            <input type="tel" id="tel" name="tel" placeholder="06 xx xx xx xx" autocomplete="tel" required>
+                        </div>
+                        <div class="field">
+                            <label for="ville">Ville</label>
+                            <input type="text" id="ville" name="ville" autocomplete="address-level2" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="adresse">Adresse</label>
+                        <textarea id="adresse" name="adresse" autocomplete="street-address" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-block">Confirmer la commande</button>
+                    <p class="note"><span class="pill-green">Paiement à la livraison</span></p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 PHILO. Tous droits réservés.</span>
+        <span>contact@philo.com</span>
+    </footer>
+
+    <script>
+        var q = new URLSearchParams(location.search);
+        if (!q.get('produit')) { location.replace('products.html'); }
+        var item = {
+            produit: q.get('produit'),
+            prix: q.get('prix'),
+            taille: q.get('taille'),
+            img: q.get('img') || 'jj.jpeg'
+        };
+        document.getElementById('s-name').textContent = item.produit;
+        document.getElementById('s-size').textContent = item.taille;
+        document.getElementById('s-total').textContent = item.prix + ' MAD';
+        document.getElementById('s-img').src = item.img;
+
+        document.getElementById('order-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = new FormData(e.target);
+    var order = Object.assign({}, item, {
+        nom: f.get('nom'),
+        tel: f.get('tel'),
+        ville: f.get('ville'),
+        adresse: f.get('adresse')
+    });
+
+    sessionStorage.setItem('philo_order', JSON.stringify(order));
+
+    fetch('/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(order)
+    }).finally(function () {
+        location.href = 'success.html';
+    });
+});
+    
+
+        
+    </script>
+</body>
+</html>
